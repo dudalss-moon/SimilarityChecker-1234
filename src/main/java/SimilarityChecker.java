@@ -6,7 +6,22 @@ public class SimilarityChecker {
         if (isSameLength(fistString, secondString)) {
             return MAX_SCORE;
         }
+
+        if (isTowMultipleLength(fistString, secondString)) {
+            return 0;
+        }
+
         return getLengthScoreForPartialMatched(fistString, secondString);
+    }
+
+    private boolean isTowMultipleLength(String fistString, String secondString) {
+        int gapCount = Math.abs(fistString.length() - secondString.length());
+        int minCount = Math.min(fistString.length(), secondString.length());
+
+        if (minCount <= gapCount) {
+            return true;
+        }
+        return false;
     }
 
     private boolean isSameLength(String fistString, String secondString) {
