@@ -7,18 +7,18 @@ public class SimilarityChecker {
             return MAX_SCORE;
         }
 
-        if (isTowMultipleLength(fistString, secondString)) {
+        if (isOverDoubleLength(fistString, secondString)) {
             return 0;
         }
 
         return getLengthScoreForPartialMatched(fistString, secondString);
     }
 
-    private boolean isTowMultipleLength(String fistString, String secondString) {
-        int gapCount = Math.abs(fistString.length() - secondString.length());
-        int minCount = Math.min(fistString.length(), secondString.length());
+    private boolean isOverDoubleLength(String fistString, String secondString) {
+        int gapLength = Math.abs(fistString.length() - secondString.length());
+        int minLength = Math.min(fistString.length(), secondString.length());
 
-        if (minCount <= gapCount) {
+        if (minLength <= gapLength) {
             return true;
         }
         return false;
